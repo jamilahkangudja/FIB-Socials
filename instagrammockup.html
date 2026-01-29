@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNT Business First-Gen Brand Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --unt-green: #00853E;
+            --unt-dark: #006b32;
+            --unt-gold: #C6A052;
+        }
+        .bg-unt-green { background-color: var(--unt-green); }
+        .text-unt-green { color: var(--unt-green); }
+        .border-unt-green { border-color: var(--unt-green); }
+        
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .insta-card {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .insta-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .story-ring {
+            padding: 2px;
+            border: 2px solid var(--unt-green);
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+
+        .highlight-item:hover .story-ring {
+            transform: scale(1.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--unt-green), var(--unt-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mock Post Types Styles */
+        .post-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Strategy Toast - Fixed at bottom to prevent clipping */
+        #strategy-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            width: 90%;
+            max-width: 500px;
+            background: #1a1a1a;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            z-index: 9999;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-left: 4px solid var(--unt-green);
+        }
+
+        #strategy-toast.active {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="pb-32">
+
+    <!-- Strategy Toast -->
+    <div id="strategy-toast">
+        <div class="flex items-start gap-3">
+            <div class="bg-unt-green p-2 rounded-lg flex-shrink-0">
+                <i class="fa-solid fa-lightbulb text-white"></i>
+            </div>
+            <div>
+                <p id="toast-title" class="font-bold text-unt-green text-[10px] uppercase tracking-widest mb-1"></p>
+                <p id="toast-desc" class="text-sm leading-snug text-gray-200"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="bg-white border-b sticky top-0 z-50 px-4 py-3 flex justify-between items-center max-w-4xl mx-auto w-full">
+        <div class="text-xl font-bold italic tracking-tighter">Instagram</div>
+        <div class="hidden md:flex bg-gray-100 rounded-lg px-3 py-1 items-center space-x-2 w-64">
+            <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+            <input type="text" placeholder="Search" class="bg-transparent outline-none text-sm w-full">
+        </div>
+        <div class="flex space-x-5 text-xl">
+            <i class="fa-solid fa-house"></i>
+            <i class="fa-regular fa-paper-plane"></i>
+            <i class="fa-regular fa-square-plus"></i>
+            <i class="fa-regular fa-compass"></i>
+            <i class="fa-regular fa-heart"></i>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto mt-8 px-4">
+        
+        <!-- Profile Section -->
+        <header class="flex flex-col md:flex-row md:items-center mb-10 gap-8">
+            <div class="md:w-1/3 flex justify-center">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-unt-green flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
+                    <div class="text-white text-center">
+                        <div class="font-black text-2xl">UNT</div>
+                        <div class="text-[10px] font-bold">COB LEADERS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:w-2/3">
+                <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <h1 class="text-2xl font-light">unt_biz_leaders</h1>
+                    <div class="flex gap-2">
+                        <button class="bg-unt-green text-white px-6 py-1.5 rounded-lg text-sm font-semibold">Follow</button>
+                        <button class="bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold">Message</button>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-8 mb-4 font-medium">
+                    <span><strong>124</strong> posts</span>
+                    <span><strong>1.2k</strong> followers</span>
+                    <span><strong>342</strong> following</span>
+                </div>
+                
+                <div class="text-sm">
+                    <p class="font-bold text-gray-800">UNT First-Gen Business Leaders</p>
+                    <p class="text-gray-500">Education</p>
+                    <p>🦅 Bridging community for First-Gen students<br>💼 Leadership & Career Ready resources<br>📍 University of North Texas | COB</p>
+                    <a href="#" class="text-blue-900 font-bold">linktr.ee/untcobleaders</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Highlights -->
+        <div class="flex space-x-6 overflow-x-auto pb-8 mb-8 border-b scrollbar-hide">
+            
+            <div class="highlight-item flex-shrink-0 flex flex-col items-center cursor-help"
+                 onmouseenter="showTip('Impact Strategy', 'Post student success stories here. Use a \'Before & After\' format: How they felt joining UNT vs. where they are now after your support.')" 
+                 onmouseleave="hideTip()">
+                <div class="story-ring mb-2"><div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"><i class="fa-solid fa-graduation-cap text-unt-green text-xl"></i></div></div>
+                <span class="text-xs font-semibold">Impact</span>
+            </div>
+
+            <div class="highlight-item flex-shrink-0 flex flex-col items-center cursor-help"
+                 onmouseenter="showTip('Career Library', 'Archive your \'Resume Hacks\' and \'Networking Tips\' here. This becomes a 24/7 resource hub for students who follow late in the semester.')" 
+                 onmouseleave="hideTip()">
+                <div class="story-ring mb-2"><div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"><i class="fa-solid fa-briefcase text-unt-green text-xl"></i></div></div>
+                <span class="text-xs font-semibold">Careers</span>
+            </div>
+
+            <div class="highlight-item flex-shrink-0 flex flex-col items-center cursor-help"
+                 onmouseenter="showTip('Community Culture', 'Show the faces! Staff introductions, student leader takeovers, and behind-the-scenes office vibes. Humanize the COB.')" 
+                 onmouseleave="hideTip()">
+                <div class="story-ring mb-2"><div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"><i class="fa-solid fa-users text-unt-green text-xl"></i></div></div>
+                <span class="text-xs font-semibold">Community</span>
+            </div>
+
+            <div class="highlight-item flex-shrink-0 flex flex-col items-center cursor-help"
+                 onmouseenter="showTip('Resource Map', 'Direct guides on how to find our office, how to book an appointment, and where to find the first-gen lounge. Practical, easy info.')" 
+                 onmouseleave="hideTip()">
+                <div class="story-ring mb-2"><div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"><i class="fa-solid fa-map-location-dot text-unt-green text-xl"></i></div></div>
+                <span class="text-xs font-semibold">Resources</span>
+            </div>
+
+        </div>
+
+        <!-- Grid Tabs -->
+        <div class="flex justify-center border-t -mt-8 mb-4">
+            <div class="flex space-x-12">
+                <div class="border-t border-black py-4 flex items-center space-x-1 text-xs font-bold tracking-widest uppercase cursor-pointer">
+                    <i class="fa-solid fa-table-cells"></i> <span>Posts</span>
+                </div>
+                <div class="py-4 flex items-center space-x-1 text-xs text-gray-400 font-bold tracking-widest uppercase cursor-pointer">
+                    <i class="fa-solid fa-clapperboard"></i> <span>Reels</span>
+                </div>
+                <div class="py-4 flex items-center space-x-1 text-xs text-gray-400 font-bold tracking-widest uppercase cursor-pointer">
+                    <i class="fa-solid fa-user-tag"></i> <span>Tagged</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Feed Grid -->
+        <div class="grid grid-cols-3 gap-1 md:gap-7">
+            
+            <div class="insta-card bg-gray-300">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523240715181-310f9d7a5738?auto=format&fit=crop&q=80&w=400');"></div>
+                <div class="post-label">Member Spotlight</div>
+                <div class="overlay"><i class="fa-solid fa-heart mr-2"></i> 84 <i class="fa-solid fa-comment ml-4 mr-2"></i> 12</div>
+                <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                    <p class="text-white text-[10px] md:text-xs font-bold leading-tight">"Being first-gen means creating my own path..."</p>
+                </div>
+            </div>
+
+            <div class="insta-card bg-unt-green p-6 flex flex-col justify-between text-white">
+                <div class="post-label bg-unt-gold">Career Tip</div>
+                <div class="mt-8">
+                    <h3 class="text-lg md:text-2xl font-black italic">RESUME<br>HACKS</h3>
+                    <p class="text-[8px] md:text-xs opacity-90 mt-2">FOR THE BUSINESS CAREER FAIR</p>
+                </div>
+                <div class="text-[10px] uppercase font-bold tracking-widest">Swipe for more →</div>
+                <div class="overlay"><i class="fa-solid fa-heart mr-2"></i> 156 <i class="fa-solid fa-comment ml-4 mr-2"></i> 8</div>
+            </div>
+
+            <div class="insta-card bg-gray-300">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&q=80&w=400');"></div>
+                <div class="post-label">Campus Life</div>
+                <div class="overlay"><i class="fa-solid fa-heart mr-2"></i> 92 <i class="fa-solid fa-comment ml-4 mr-2"></i> 3</div>
+            </div>
+
+            <div class="insta-card border-4 border-unt-green bg-white flex flex-col items-center justify-center p-4 text-center">
+                <div class="post-label bg-unt-green">Event</div>
+                <div class="text-unt-green font-black text-3xl mb-1 italic">TONIGHT</div>
+                <div class="w-full h-0.5 bg-unt-green mb-2 opacity-20"></div>
+                <p class="text-[10px] md:text-sm font-bold uppercase tracking-tighter">Leadership Speaker Series</p>
+                <p class="text-[8px] md:text-[10px] mt-1">BLB Room 180 • 6:00 PM</p>
+                <div class="overlay"><i class="fa-solid fa-heart mr-2"></i> 210 <i class="fa-solid fa-comment ml-4 mr-2"></i> 45</div>
+            </div>
+
+            <div class="insta-card bg-gray-800">
+                <div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400');"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <i class="fa-solid fa-play text-white text-3xl opacity-80"></i>
+                </div>
+                <div class="post-label"><i class="fa-solid fa-clapperboard mr-1"></i> Reel</div>
+                <div class="overlay"><i class="fa-solid fa-play mr-2"></i> 1.2k views</div>
+            </div>
+
+            <div class="insta-card bg-gray-100 flex flex-col justify-center p-6 italic">
+                <div class="text-unt-green text-3xl font-serif">"</div>
+                <p class="text-gray-700 text-[10px] md:text-sm font-medium -mt-4">
+                    Networking isn't about asking for favors. It's about building community within the industry.
+                </p>
+                <p class="text-unt-green font-bold text-[8px] md:text-xs mt-3 not-italic">— Dean's Leadership Circle</p>
+                <div class="overlay"><i class="fa-solid fa-heart mr-2"></i> 67 <i class="fa-solid fa-comment ml-4 mr-2"></i> 2</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- UI Overlay Info Box -->
+    <div class="max-w-4xl mx-auto mt-12 bg-unt-green/5 border border-unt-green/20 rounded-xl p-8 mx-4">
+        <h2 class="text-unt-green font-bold text-xl mb-4">Why this works for your program:</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+                <div class="bg-white w-10 h-10 rounded-lg shadow-sm flex-shrink-0 flex items-center justify-center text-unt-green">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Visual Variety</h4>
+                    <p class="text-xs text-gray-600 mt-1">By mixing photography, bold typography, and quote blocks, the feed looks curated rather than cluttered.</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="bg-white w-10 h-10 rounded-lg shadow-sm flex-shrink-0 flex items-center justify-center text-unt-green">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Consistent Branding</h4>
+                    <p class="text-xs text-gray-600 mt-1">UNT Green is used as the "thread" that ties every post together, whether it's a border, text, or a full background.</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="bg-white w-10 h-10 rounded-lg shadow-sm flex-shrink-0 flex items-center justify-center text-unt-green">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Peer Credibility</h4>
+                    <p class="text-xs text-gray-600 mt-1">The "Member Spotlight" posts humanize the program, making it feel like a "Community" rather than just a "Service."</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="bg-white w-10 h-10 rounded-lg shadow-sm flex-shrink-0 flex items-center justify-center text-unt-green">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Actionable Content</h4>
+                    <p class="text-xs text-gray-600 mt-1">"Resume Hacks" provide immediate value, encouraging students to "Save" the post for later—which boosts the algorithm.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Manager Checklist -->
+    <div class="max-w-4xl mx-auto mt-12 p-4">
+        <div class="bg-white border-2 border-unt-green/20 rounded-2xl p-8 shadow-sm">
+            <h2 class="text-unt-green font-black text-xl mb-6 flex items-center gap-2 italic uppercase">
+                <i class="fa-solid fa-list-check"></i> Student Manager Checklist
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="font-bold text-sm border-b pb-2 text-gray-400 uppercase tracking-widest">The Daily Rhythm</h3>
+                    <ul class="text-sm space-y-3">
+                        <li class="flex gap-3"><i class="fa-regular fa-square-check text-unt-green mt-1"></i> <span>Respond to all DMs within 24 hours.</span></li>
+                        <li class="flex gap-3"><i class="fa-regular fa-square-check text-unt-green mt-1"></i> <span>Check tags/mentions and repost to stories.</span></li>
+                        <li class="flex gap-3"><i class="fa-regular fa-square-check text-unt-green mt-1"></i> <span>Tag @untryanbusiness in important stories.</span></li>
+                        <li class="flex gap-3"><i class="fa-regular fa-square-check text-unt-green mt-1"></i> <span>Engage with student organization posts.</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-bold text-sm border-b pb-2 text-gray-400 uppercase tracking-widest">Brand Standards</h3>
+                    <ul class="text-sm space-y-3">
+                        <li class="flex gap-3"><i class="fa-solid fa-circle-exclamation text-unt-gold mt-1"></i> <span>No flyers as main posts—use "The Hook" strategy.</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-circle-exclamation text-unt-gold mt-1"></i> <span>All graphics must use UNT Green primary.</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-circle-exclamation text-unt-gold mt-1"></i> <span>Photos of faces = 40% more likes. Prioritize people.</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-circle-exclamation text-unt-gold mt-1"></i> <span>Flyers belong in stories, NOT the main feed.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTip(title, desc) {
+            const toast = document.getElementById('strategy-toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-desc').innerText = desc;
+            toast.classList.add('active');
+        }
+
+        function hideTip() {
+            const toast = document.getElementById('strategy-toast');
+            toast.classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
