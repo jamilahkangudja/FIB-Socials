@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Fellows Resource Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .display-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .flyer-shadow {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Branding Colors */
+        .bg-brand-primary { background-color: #002147; } /* UNT Navy-ish */
+        .text-brand-primary { color: #002147; }
+        .bg-brand-accent { background-color: #FFD700; } /* High Contrast Gold */
+        .text-brand-accent { color: #FFD700; }
+        
+        .tab-active {
+            border-bottom: 4px solid #002147;
+            color: #002147;
+            font-weight: bold;
+        }
+
+        /* Image Placeholder Style */
+        .image-placeholder {
+            background-color: #e5e7eb;
+            background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8 border-b pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-black text-brand-primary mb-2 uppercase tracking-tighter">Visual-First Flyer Guide</h1>
+                <p class="text-gray-600 max-w-xl text-sm">Updated templates with image placeholders, contact info, and high-impact layouts for Instagram.</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase">Image-Rich Design</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase">v2.0</span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex gap-6 mb-8 overflow-x-auto pb-2 border-b border-gray-200">
+            <button onclick="switchTab('square')" id="tab-square" class="tab-active whitespace-nowrap px-2 py-2">Instagram Post (1:1)</button>
+            <button onclick="switchTab('story')" id="tab-story" class="whitespace-nowrap px-2 py-2 text-gray-500">Instagram Story (9:16)</button>
+            <button onclick="switchTab('print')" id="tab-print" class="whitespace-nowrap px-2 py-2 text-gray-500">Standard Flyer (8.5x11)</button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            
+            <!-- Preview Area -->
+            <div class="lg:col-span-2 flex justify-center bg-gray-100 p-4 md:p-12 rounded-3xl shadow-inner border border-gray-200 min-h-[600px]">
+                
+                <!-- Instagram Square (NOW VISUAL FIRST) -->
+                <div id="view-square" class="flyer-shadow bg-white w-[450px] h-[450px] flex flex-col relative overflow-hidden group">
+                    <!-- Top Image Area (60% of layout) -->
+                    <div class="h-[60%] image-placeholder relative">
+                        <span class="font-bold uppercase tracking-widest text-xs">Upload Student/Event Photo Here</span>
+                        <!-- Overlay Tag -->
+                        <div class="absolute bottom-0 left-0 bg-brand-accent text-black font-black px-4 py-2 text-sm uppercase">
+                            Open Event
+                        </div>
+                    </div>
+                    <!-- Bottom Info Area -->
+                    <div class="h-[40%] p-6 flex flex-col justify-between">
+                        <div>
+                            <h2 class="display-font text-3xl font-black text-brand-primary leading-none uppercase mb-2">Creative Media Workshop</h2>
+                            <p class="text-brand-primary font-bold text-sm">Oct 24 • 4:30 PM • Business Building 204</p>
+                        </div>
+                        <div class="flex justify-between items-end border-t pt-4">
+                            <div class="text-[10px] font-bold text-gray-400 uppercase leading-tight">
+                                First in Business / Student Success<br>
+                                <span class="text-brand-primary">firstinbusiness@unt.edu</span>
+                            </div>
+                            <div class="w-10 h-10 bg-brand-primary rounded-full flex items-center justify-center text-white text-xs font-bold">UNT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram Story (Full Screen Image) -->
+                <div id="view-story" class="hidden flyer-shadow w-[320px] h-[568px] flex flex-col relative bg-brand-primary overflow-hidden">
+                    <!-- Full background placeholder -->
+                    <div class="absolute inset-0 image-placeholder opacity-40">
+                        <span class="text-white text-xs">Background Photo</span>
+                    </div>
+                    
+                    <div class="relative flex-grow p-8 flex flex-col justify-end">
+                        <div class="mb-4">
+                            <span class="bg-brand-accent text-black text-[10px] font-black px-2 py-1 uppercase">RSVP Required</span>
+                        </div>
+                        <h2 class="display-font text-5xl font-black text-white leading-[0.9] uppercase mb-6 tracking-tighter">Build Your<br>Brand.</h2>
+                        
+                        <div class="space-y-1 mb-8">
+                            <p class="text-brand-accent font-bold text-lg">Monday, Oct 24</p>
+                            <p class="text-white text-sm">4:30 PM | BLB Room 204</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg text-center mb-4 shadow-xl">
+                            <p class="text-brand-primary font-black text-xs uppercase tracking-widest">Link in Bio to Register</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative bg-brand-accent p-3 text-center">
+                        <p class="text-[10px] font-black text-brand-primary uppercase">firstinbusiness@unt.edu</p>
+                    </div>
+                </div>
+
+                <!-- Standard Flyer (Print) -->
+                <div id="view-print" class="hidden flyer-shadow bg-white w-[420px] aspect-[8.5/11] flex flex-col border-[12px] border-brand-primary">
+                    <div class="p-8 flex-grow">
+                        <div class="flex justify-between items-center mb-6">
+                            <p class="text-xs font-black text-brand-primary uppercase tracking-widest italic">First in Business x Student Success</p>
+                            <div class="h-px flex-grow mx-4 bg-gray-200"></div>
+                            <span class="text-xs font-bold">2024</span>
+                        </div>
+
+                        <h2 class="display-font text-5xl font-black text-brand-primary mb-6 leading-tight uppercase">Event Title<br>Header Here</h2>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="image-placeholder h-40 rounded-xl">
+                                <span class="text-[10px] p-4 text-center">Photo of previous event</span>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl flex flex-col justify-center">
+                                <p class="text-xs font-bold text-gray-400 uppercase mb-1">When & Where</p>
+                                <p class="font-black text-lg text-brand-primary leading-tight mb-2">Oct 24, 4:30 PM</p>
+                                <p class="text-sm text-gray-600 font-medium italic">Business Building<br>Room 204</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-brand-accent text-xl">✦</span>
+                                <p class="text-sm text-gray-700 leading-snug">Capacity limited to 30 media fellows. Early arrival is encouraged for priority seating.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-brand-accent text-xl">✦</span>
+                                <p class="text-sm text-gray-700 leading-snug">Light refreshments and media kits provided for all confirmed attendees.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-brand-primary p-6 text-white">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[10px] font-bold opacity-60 uppercase">Questions? Email us:</p>
+                                <p class="text-sm font-black text-brand-accent">firstinbusiness@unt.edu</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] font-bold opacity-60 uppercase">Registration</p>
+                                <p class="text-sm font-black">UNT.EDU/SUCCESS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Checklist Sidebar -->
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                    <h3 class="font-black text-brand-primary uppercase tracking-tight mb-4 flex items-center gap-2">
+                        <span>📸</span> Visual-First Rules
+                    </h3>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex gap-2"><strong>1.</strong> Use high-res student photos</li>
+                        <li class="flex gap-2"><strong>2.</strong> Title should be 2-4 words max</li>
+                        <li class="flex gap-2"><strong>3.</strong> One clear Call to Action (CTA)</li>
+                        <li class="flex gap-2 text-brand-primary font-bold"><strong>4.</strong> firstinbusiness@unt.edu (Required)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-primary text-white p-6 rounded-2xl">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <span>♿</span> Accessibility Prep
+                    </h3>
+                    <p class="text-xs opacity-70 mb-4">Since these are image-heavy, Alt-Text is mandatory for screen readers.</p>
+                    <div class="bg-white/10 p-3 rounded-lg text-xs font-mono break-words">
+                        [Alt-Text Example]: Graphic for [Event Name] on Oct 24 at 4:30pm in BLB 204. Hosted by First in Business. Email firstinbusiness@unt.edu for info.
+                    </div>
+                </div>
+
+                <button onclick="window.print()" class="w-full py-4 bg-brand-accent text-brand-primary hover:brightness-110 transition-all font-black uppercase tracking-widest rounded-xl shadow-lg">
+                    Print Design Guide
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(view) {
+            document.getElementById('view-print').classList.add('hidden');
+            document.getElementById('view-square').classList.add('hidden');
+            document.getElementById('view-story').classList.add('hidden');
+            
+            document.getElementById('tab-print').className = "whitespace-nowrap px-2 py-2 text-gray-500";
+            document.getElementById('tab-square').className = "whitespace-nowrap px-2 py-2 text-gray-500";
+            document.getElementById('tab-story').className = "whitespace-nowrap px-2 py-2 text-gray-500";
+
+            document.getElementById('view-' + view).classList.remove('hidden');
+            document.getElementById('tab-' + view).className = "tab-active whitespace-nowrap px-2 py-2";
+        }
+    </script>
+</body>
+</html>
